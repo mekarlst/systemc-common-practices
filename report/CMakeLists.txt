@@ -20,19 +20,23 @@ include(${cpm-cmake_SOURCE_DIR}/cmake/CPM.cmake)
 
 cpmaddpackage("${GITHUB}TheLartians/PackageProject.cmake.git@1.4.1")
 
-cpmaddpackage(
-  NAME SystemCLanguage
-  GIT_REPOSITORY  ${GITHUB}accellera-official/systemc.git
-  GIT_SHALLOW True
-  GIT_TAG main
-)
+if (NOT TARGET systemc)
+  cpmaddpackage(
+    NAME SystemCLanguage
+    GIT_REPOSITORY  ${GITHUB}accellera-official/systemc.git
+    GIT_SHALLOW True
+    GIT_TAG main
+  )
+endif()
 
-cpmaddpackage(
-  NAME SystemCCCI
-  GIT_REPOSITORY  ${GITHUB}accellera-official/cci.git
-  GIT_SHALLOW True
-  GIT_TAG main
-)
+if (NOT TARGET cci)
+  cpmaddpackage(
+    NAME SystemCCCI
+    GIT_REPOSITORY  ${GITHUB}accellera-official/cci.git
+    GIT_SHALLOW True
+    GIT_TAG main
+  )
+endif()
 
 set(WITH_FMT "true" CACHE STRING "Include FMT library")
 if (WITH_FMT)
@@ -40,7 +44,7 @@ cpmaddpackage(
   NAME fmt
   GIT_REPOSITORY  ${GITHUB}fmtlib/fmt.git
   GIT_SHALLOW True
-  GIT_TAG 9.1.0
+  GIT_TAG 11.2.0
   OPTIONS FMT_INSTALL "" ON
 )
 endif()
@@ -48,7 +52,7 @@ endif()
 FetchContent_Declare(
     spdlog_git
     GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
-    GIT_TAG        "v1.9.2"
+    GIT_TAG        "v1.15.3"
     GIT_SHALLOW    ON
 )
 FetchContent_Populate(spdlog_git)

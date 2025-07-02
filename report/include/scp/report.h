@@ -53,9 +53,6 @@ const sc_core::sc_verbosity SC_UNSET = (sc_core::sc_verbosity)INT_MAX;
 //! this module
 #define SCP_LOG_LEVEL_PARAM_NAME "log_level"
 
-// must be global for macro to work.
-static const char* _SCP_FMT_EMPTY_STR = "";
-
 /** \ingroup scp-report
  *  @{
  */
