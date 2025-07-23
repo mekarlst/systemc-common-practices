@@ -410,7 +410,9 @@ protected:
 #define SCP_LOGGER_NAME(x) CAT(_m_scp_log_level_cache_, x)
 
 /* User interface macros */
+#ifndef SCMOD
 #define SCMOD this->sc_core::sc_module::name()
+#endif
 #define SCP_LOGGER(...)                                                 \
     scp::scp_logger_cache IIF(IS_PAREN(FIRST_ARG(__VA_ARGS__)))(        \
         SCP_LOGGER_NAME(EXPAND(FIRST_ARG FIRST_ARG(__VA_ARGS__))),      \
